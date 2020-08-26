@@ -12,23 +12,29 @@ public class Sudoku {
         List<Integer> list = new ArrayList<>();
         String[] xyz = data.split(" ");
 
-        if(xyz.length != 81) throw new Exception("Inavalid Sudoku");
+        if(xyz.length != 81)
+            throw new Exception("Invalid Sudoku: It must be a 9x9 matrix.");
 
         for (String s : xyz) {
-            if(s.length() != 3) throw new Exception("Inavalid Sudoku");
+            if(s.length() != 3)
+                throw new Exception("Invalid Sudoku: The item's format must be xyz.");
+
             x = Character.getNumericValue(s.charAt(0));
             y = Character.getNumericValue(s.charAt(1));
             z = Character.getNumericValue(s.charAt(2));
 
-            if(x == 9 || y == 9 || z == 0) throw new Exception("Inavalid Sudoku");
+            if(x == 9 || y == 9 || z == 0)
+                throw new Exception("Invalid Sudoku: x and y can't be 9 and z can't be 0.");
 
-            if(x == i) {
-                if(!list.contains(z)) list.add(z);
-                else throw new Exception("Inavalid Sudoku");
-            } else {
+            if(x != i) {
                 list.clear();
                 i++;
             }
+
+            if(list.contains(z))
+                throw new Exception("Invalid Sudoku: Each number must be unique by each line and column");
+
+            list.add(z);
 
             matrix[x][y] = z;
         }
