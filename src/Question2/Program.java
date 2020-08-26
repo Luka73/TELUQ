@@ -2,9 +2,14 @@ package Question2;
 
 public class Program {
     public static void main(String[] args) throws Exception {
-        String data = Utils.readFile("C:\\Projects\\TELUQ\\src\\Question2\\resources\\part1.txt");
+        //part1.txt --> funciona (é do professor)
+        //part2.txt --> funciona (randômico)
+        //part3.txt --> não funciona
+        String data = Utils.readFile("C:\\Projects\\TELUQ\\src\\Question2\\resources\\part3.txt");
         Sudoku sudoku = new Sudoku(data);
-        int[][] trasposedMatrix = sudoku.transposeMatrix(sudoku.getMatrix());
-        sudoku.showMatrix(trasposedMatrix);
+        int[][] transposedMatrix = sudoku.transposeMatrix(sudoku.getMatrix());
+        sudoku.showMatrix(sudoku.getMatrix());
+        System.out.println("**********************************");
+        sudoku.showMatrix(transposedMatrix);
     }
 }
