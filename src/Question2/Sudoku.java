@@ -9,7 +9,7 @@ public class Sudoku {
     public Sudoku(String data) throws Exception {
         int i = 0;
         int x, y, z;
-        List<Integer> list = new ArrayList<>();
+        List<Integer> list= new ArrayList<>();
         String[] xyz = data.split(" ");
 
         if(xyz.length != 81)
@@ -33,7 +33,7 @@ public class Sudoku {
             }
 
             if(list.contains(z))
-                throw new Exception("Invalid Sudoku: Each number must be unique by each line and column");
+                throw new Exception("Invalid Sudoku: Each number must be unique by each line or column.");
 
             list.add(z);
 
