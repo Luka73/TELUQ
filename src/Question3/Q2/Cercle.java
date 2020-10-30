@@ -1,17 +1,16 @@
 package Question3.Q2;
 
-public class Cercle extends Forme implements Resizable {
-    double diametre = 0;
+// : --> C# / extends --> Java
+public class Cercle extends Forme{
+    double diametre = 3;
 
     public Cercle(double diametre) {
+
         this.diametre = diametre;
     }
 
+    @Override
     public double getPerimeter() {
-        return Math.PI * diametre;
-    }
-
-    public void resize(double diametre) {
-        this.diametre = diametre;
+        return diametre * Math.PI;
     }
 }
