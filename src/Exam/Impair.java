@@ -12,9 +12,22 @@ public class Impair {
         pelo programa de computador. Sua implementação deve ser eficaz para obter
         todos os pontos. Você deve explicar completamente sua solução.*/
 
-        Scanner sc = new Scanner(System.in);
-        int n = 0;
 
+       int myOddNumber = getOddNumber();
+       int computerOddNumber = generateOddNumber();
+
+        while (true) {
+            if(matchAnswer(computerOddNumber, myOddNumber)) {
+                System.out.println("Parabéns! Você acertou!");
+                break;
+            }
+            System.out.println("Resposta errada! Tente novamente!");
+        }
+    }
+
+    public static int getOddNumber() {
+        int n = 0;
+        Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("Escolha um número ímpar entre 1 e 100: ");
             n = sc.nextInt();
@@ -24,15 +37,7 @@ public class Impair {
             System.out.println(n + " não é ímpar.");
         }
 
-        int odd = generateOddNumber();
-
-        while (true) {
-            if(matchAnswer(odd, n)) {
-                System.out.println("Parabéns! Você acertou!");
-                break;
-            }
-            System.out.println("Resposta errada! Tente novamente!");
-        }
+        return n;
     }
 
     public static int generateOddNumber() {
@@ -47,7 +52,7 @@ public class Impair {
         System.out.println("a) " + a + " é maior que " + b);
         System.out.println("b) " + a + " é igual a " + b);
         System.out.println("c) " + a + " é menor que " + b);
-        String answer = sc.next();
+        String answer = sc.next().toLowerCase();
 
         int comp = Integer.compare(a, b);
 
@@ -57,4 +62,9 @@ public class Impair {
 
         return menor || maior || igual;
     }
+
+    /*
+        O código é
+
+     */
 }

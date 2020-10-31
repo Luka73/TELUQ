@@ -1,6 +1,6 @@
 package Exam;
 
-public class Ocurrences {
+public class Occurrences {
 
     String s = "je ne mange pas";
     char c = 'e';
@@ -26,7 +26,7 @@ public class Ocurrences {
     }
 
     public static void main(String[] args) {
-        Ocurrences ocurrences = new Ocurrences();
+        Occurrences ocurrences = new Occurrences();
         int[] indexes = occurrences(ocurrences.s, ocurrences.c);
 
         for(int i : indexes) {
