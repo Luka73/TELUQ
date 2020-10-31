@@ -4,15 +4,6 @@ import java.util.Scanner;
 
 public class Impair {
     public static void main(String[] args) {
-        /*Escreva um programa Java que peça ao usuário para escolher um número
-        ímpar entre 0 e 100. O programa deve então oferecer ao usuário um número
-        ímpar entre 0 e 100 e perguntar ao usuário se o número escolhido é
-        (a) menor (b) maior ou (c) igual ao número oferecido pelo programa.
-        O programa deve continuar até que o valor correto seja encontrado
-        pelo programa de computador. Sua implementação deve ser eficaz para obter
-        todos os pontos. Você deve explicar completamente sua solução.*/
-
-
        int myOddNumber = getOddNumber();
        int computerOddNumber = generateOddNumber(0, 100);
 
@@ -23,10 +14,9 @@ public class Impair {
                break;
            } else {
                computerOddNumber = (answer < 0)
-                       ? generateOddNumber(computerOddNumber, myOddNumber)
-                       : generateOddNumber(myOddNumber, computerOddNumber);
+                       ? generateOddNumber(++computerOddNumber, myOddNumber)
+                       : generateOddNumber(myOddNumber, --computerOddNumber);
            }
-
        }
     }
 
@@ -36,12 +26,9 @@ public class Impair {
         while (true) {
             System.out.println("Escolha um número ímpar entre 1 e 100: ");
             n = sc.nextInt();
-
             if (n % 2 == 1) break;
-
             System.out.println(n + " não é ímpar.");
         }
-
         return n;
     }
 
@@ -53,17 +40,43 @@ public class Impair {
 
     public static int compareAnswer(int a, int b) {
         Scanner sc = new Scanner(System.in);
-        System.out.println(" -- Me ajude a acertar: -- ");
-        System.out.println("a) " + a + " é maior que " + b);
-        System.out.println("b) " + a + " é igual a " + b);
-        System.out.println("c) " + a + " é menor que " + b);
-        String answer = sc.next().toLowerCase();
 
-        return Integer.compare(a, b);
+        while (true) {
+            System.out.println(" -- Me ajude a acertar: -- ");
+            System.out.println("a) " + a + " é maior que " + b);
+            System.out.println("b) " + a + " é igual a " + b);
+            System.out.println("c) " + a + " é menor que " + b);
+            String answer = sc.next().toLowerCase();
+
+            switch (answer) {
+                case "a":
+                    return 1;
+                case "b":
+                    return 0;
+                case "c":
+                    return -1;
+                default:
+                    System.out.println("Opção inválida! Digite uma opção correta!");
+            }
+        }
     }
 
     /*
-        O código é
+        Explicação
 
+        O código é dividido em três partes:
+        1) capturar o número ímpar do usuário - E ainda nesse ponto é preciso verificar
+        que o número digitado é ímpar; Isso está sendo feito pelo método getOddNumber()
+
+        2) O computador deve gerar um número ímpar; Isso está sendo feito pelo método
+        generateOddNumber(int min, int max) que recebe o intervalo de números que
+        serão passando para a função random do Java. Além disso, esse método garante
+        que os números serão ímpares.
+
+        3) O usuário deve responder se o usuário acertou ou não; Caso não, ele deve
+        indicar se o número é maior ou menor que sua escolha. Isso é feito pelo
+        método compareAnswer(int a, int b) que compara os números baseados na
+        resposta do usuário. Essa comparação poderia ser feito pelo Integer.compare(int a, int b),
+        mas nesse caso, estaria ignorando a escolha do usuário.
      */
 }
