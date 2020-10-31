@@ -14,15 +14,20 @@ public class Impair {
 
 
        int myOddNumber = getOddNumber();
-       int computerOddNumber = generateOddNumber();
+       int computerOddNumber = generateOddNumber(0, 100);
 
-        while (true) {
-            if(matchAnswer(computerOddNumber, myOddNumber)) {
-                System.out.println("Parabéns! Você acertou!");
-                break;
-            }
-            System.out.println("Resposta errada! Tente novamente!");
-        }
+       while (true) {
+           int answer = compareAnswer(computerOddNumber, myOddNumber);
+           if(answer == 0) {
+               System.out.println("Acertei!!");
+               break;
+           } else {
+               computerOddNumber = (answer < 0)
+                       ? generateOddNumber(computerOddNumber, myOddNumber)
+                       : generateOddNumber(myOddNumber, computerOddNumber);
+           }
+
+       }
     }
 
     public static int getOddNumber() {
@@ -40,27 +45,21 @@ public class Impair {
         return n;
     }
 
-    public static int generateOddNumber() {
-        int x = (int) (Math.random()*100);
-        x += (x % 2 == 0 ? 1 : 0);
-        return x;
+    public static int generateOddNumber(int min, int max) {
+        if (max % 2 == 0) --max;
+        if (min % 2 == 0) ++min;
+        return min + 2*(int)(Math.random()*((max-min)/2+1));
     }
 
-    public static boolean matchAnswer(int a, int b) {
+    public static int compareAnswer(int a, int b) {
         Scanner sc = new Scanner(System.in);
-        System.out.println(" -- Escolha a resposta correta: -- ");
+        System.out.println(" -- Me ajude a acertar: -- ");
         System.out.println("a) " + a + " é maior que " + b);
         System.out.println("b) " + a + " é igual a " + b);
         System.out.println("c) " + a + " é menor que " + b);
         String answer = sc.next().toLowerCase();
 
-        int comp = Integer.compare(a, b);
-
-        boolean menor = comp < 0 && answer.equals("c");
-        boolean maior = comp > 0 && answer.equals("a");
-        boolean igual = comp == 0 && answer.equals("b");
-
-        return menor || maior || igual;
+        return Integer.compare(a, b);
     }
 
     /*
