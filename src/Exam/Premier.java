@@ -18,4 +18,13 @@ public class Premier {
         String msg = (count == 2) ? " est premier" : " n'est pas premier";
         System.out.println(n + msg);
     }
+
+    /*
+        Explicação
+
+        Uma maneira simples de descobrir se um número é primo ou não é calcular a quantidade
+        dos seus divisores. Caso essa quantidade seja exatamente igual a 2, ele é primo.
+        Por isso, usei essa lógica para resolver esse exercício.
+
+     */
 }

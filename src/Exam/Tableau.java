@@ -18,4 +18,13 @@ public class Tableau {
         Tableau t = new Tableau();
         System.out.println("Repetitions: " + unique(t.array));
     }
+
+    /*
+        Explicação
+
+        Para calcular o número de elementos repetidos de acordo com a regra apresentada
+        na questão, basta contar quantos elementos são seguidos dele mesmo. Dessa forma eu
+        terei a quantidade de elementos repetidos após ter percorrido o array por completo.
+
+     */
 }
