@@ -14,8 +14,8 @@ public class Impair {
                break;
            } else {
                computerOddNumber = (answer < 0)
-                       ? generateOddNumber(++computerOddNumber, myOddNumber)
-                       : generateOddNumber(myOddNumber, --computerOddNumber);
+                       ? generateOddNumber(++computerOddNumber, 100)
+                       : generateOddNumber(0, --computerOddNumber);
            }
        }
     }
